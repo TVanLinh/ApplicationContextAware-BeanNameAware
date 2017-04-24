@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="parent" class="linhtran.oec.com.Department" abstract="true">
+            <property name="employees" >
+                <list>
+                    <ref bean="em1"/>
+                </list>
+            </property>
+        </bean>
+
+
+        <bean id="child" class="linhtran.oec.com.Department" parent="parent">
+            <property name="employees" >
+                <list merge="true">
+                    <ref bean="em1"/>
+                    <ref bean="em2"/>
+                </list>
+            </property>
+        </bean>
+      <bean id="em1" class="linhtran.oec.com.Employee">
+          <property name="name" value="Tran Van Linh"/>
+      </bean>
+      <bean id="em2" class="linhtran.oec.com.Employee">
+          <property name="name" value="Tran Hong Nhung"/>
+      </bean>
+
+</beans>
